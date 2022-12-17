@@ -17,6 +17,7 @@ import think.rpgitems.RPGItems;
 import think.rpgitems.power.PowerManager;
 import think.rpgitems.power.Utils;
 
+import java.io.IOException;
 import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -383,6 +384,21 @@ public final class ItemTagUtils {
         @Override
         public boolean has(@NotNull NamespacedKey key) {
             return self.has(key);
+        }
+
+        @Override
+        public byte @NotNull [] serializeToBytes() throws IOException {
+            return new byte[0];
+        }
+
+        @Override
+        public void readFromBytes(byte @NotNull [] bytes, boolean clear) throws IOException {
+
+        }
+
+        @Override
+        public void readFromBytes(byte @NotNull [] bytes) throws IOException {
+            PersistentDataContainer.super.readFromBytes(bytes);
         }
 
         public void commit() {
